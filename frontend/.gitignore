@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Vite build output
+dist/
+dist-ssr/
+build/
+
+# Environment variables (NEVER commit these)
+.env                    # ← Main one (most important!)
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# Vite cache & logs
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDEs
+.vscode/
+  !.vscode/extensions.json
+  !.vscode/settings.json      # ← optional: keep if you want to share settings
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing
+coverage/
+.coverage/
+
+# Misc
+*.tsbuildinfo
+*.env.local
+*.env.*.local

@@ -1,0 +1,63 @@
+# Node / Express
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build / Dist
+dist/
+build/
+
+# Uploads folder (NEVER commit user uploads!)
+uploads/
+uploads/**
+!/uploads/.gitkeep        # ← optional: keep folder structure
+
+# IDE / Editor
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Firebase (you have this file)
+meet-up-app-6b65c-firebase-adminsdk-*.json
+*-firebase-adminsdk-*.json
+
+# Testing
+coverage/
+.nyc_output/
+
+# PM2 / Process manager
+.pm2/
+ecosystem.config.js
+
+# Nodemon
+nodemon.json
+
+# google auth firebase console
+meet-up-app-6b65c-firebase-adminsdk-6lyn2-226300e51e.json
