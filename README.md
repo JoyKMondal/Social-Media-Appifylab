@@ -35,13 +35,14 @@ A modern full-stack social media application. Users can register, log in, create
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![Login & Register Pages](https://imgur.com/a/VDqjDP1)
-![Feed Page with posts, likes and comments](https://imgur.com/a/uTCTVb8)  
+![Login & Register Pages](https://imgur.com/a/VDqjDP1.png)
 
-![Dashboard for managing Posts](https://imgur.com/a/sfdHX76)  
+![Feed Page with posts, likes and comments](https://imgur.com/a/uTCTVb8.png)  
 
-![New Post Page](https://imgur.com/a/4LrFNc1) 
+![Dashboard for managing Posts](https://imgur.com/a/sfdHX76.png)  
 
+![New Post Page](https://imgur.com/a/4LrFNc1.png) 
+# https://i.imgur.com/your-login-screenshot-link.png
 
 ### Built With
 
