@@ -41,8 +41,7 @@ A modern full-stack social media application. Users can register, log in, create
 
 ![Dashboard for managing Posts](https://imgur.com/a/sfdHX76.png)  
 
-![New Post Page](https://imgur.com/a/4LrFNc1.png) 
-# https://i.imgur.com/your-login-screenshot-link.png
+![New Post Page](https://i.imgur.com/07LBELh.png)
 
 ### Built With
 
