@@ -81,8 +81,6 @@ const Blog = ({ blog, author }) => {
     }
   };
 
-  console.log(blogs, "blogs")
-
   const handleDeleteBlog = async (e, blogId) => {
     e.preventDefault();
 
@@ -126,7 +124,6 @@ const Blog = ({ blog, author }) => {
           setPreviousCommentsLoaded,
         }}
       >
-        <CommentDrawer />
         <div className="bg-white border border-[#efefef] p-4 shadow-xl shadow-[#dadada] rounded-md">
           {/* post header */}
           <div className="flex items-center justify-between">
@@ -228,13 +225,15 @@ const Blog = ({ blog, author }) => {
           <p className="mt-5 text-[#515151] text-md">{title}</p>
 
           {/* Post Image */}
-          <div className="w-full border border-[#efefef] bg-[#f8f8f8] mt-5 rounded-md">
-            <img
-              src={banner}
-              alt=""
-              className="w-full object-cover rounded-md"
-            />
-          </div>
+          <Link to={`/blog/${blogId}`}>
+            <div className="w-full border border-[#efefef] bg-[#f8f8f8] mt-5 rounded-md">
+              <img
+                src={banner}
+                alt=""
+                className="w-full object-cover rounded-md"
+              />
+            </div>
+          </Link>
 
           {/* post bottom */}
           <BlogActions />

@@ -72,7 +72,6 @@ const ChangePasswordPage = () => {
         }
       );
 
-      console.log(responseData);
       toast.success(responseData.message);
     } catch (err) {
       console.error(err);

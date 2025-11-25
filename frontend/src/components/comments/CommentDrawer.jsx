@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import AnimationWrapper from "../../shared/components/animation/page-animation";
-import NoDataFound from "../skeletons/NoDataFound";
 import AllComment from "./AllComment";
 import CommentsElement from "./CommentsElement";
-import { BlogActionsContext } from "../blogs/Blog";
+import { BlogDetailContext } from "../../pages/blog/BlogDetailPage";
+import NoDataFound from "../skeletons/NoDataFound";
 
 export const fetchComments = async ({
   skip = 0,
@@ -94,9 +94,7 @@ const CommentDrawer = () => {
     setBlog,
     previousCommentsLoaded,
     setPreviousCommentsLoaded,
-  } = useContext(BlogActionsContext);
-
-  console.log(commentsArray, "commentsArray")
+  } = useContext(BlogDetailContext);
 
   const loadMoreComments = async () => {
     const commentsArr = await fetchComments({
@@ -139,13 +137,15 @@ const CommentDrawer = () => {
               <h3 className="font-inter font-semibold py-2 text-black">
                 Comments
               </h3>
-              <p className="text-xl capitalize text-dark-grey">{blog?.creator?.personal_info?.firstName}</p>
+              <p className="text-xl capitalize text-dark-grey">
+                {blog?.creator?.personal_info?.firstName}
+              </p>
             </div>
           </div>
           <hr className="border-dark-grey my-4" />
           <CommentsElement action="comment" />
 
-          {commentsArray && commentsArray.length && (
+          {commentsArray && commentsArray.length ? (
             commentsArray.map((comment, index) => {
               return (
                 <AnimationWrapper key={index}>
@@ -159,11 +159,9 @@ const CommentDrawer = () => {
                 </AnimationWrapper>
               );
             })
-          ) 
-          // : (
-          //   <NoDataFound message="no comments found" />
-          // )
-          }
+          ) : (
+            <NoDataFound message="no comments found" />
+          )}
 
           {total_parent_comments > previousCommentsLoaded && (
             <button onClick={loadMoreComments} className="btn btn-sm w-1/3">

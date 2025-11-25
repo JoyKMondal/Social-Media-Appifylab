@@ -18,7 +18,6 @@ const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   let blogLimit = 2;
-  console.log(query, "query");
 
   const searchBlogs = async (page = 1) => {
     try {

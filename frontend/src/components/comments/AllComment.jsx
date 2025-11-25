@@ -1,170 +1,21 @@
-// import { useState } from "react";
-// import { FaReply, FaHeart, FaRegHeart } from "react-icons/fa";
-// import CommentsElement from "./CommentsElement";
-
-// const AllComment = ({ index, leftVal, comments }) => {
-//   let {
-//     comment,
-//     commentedAt,
-//     commented_by: {
-//       personal_info: { username, profileImage },
-//     },
-//     _id,
-//   } = comments;
-
-//   console.log(comments);
-
-//   const [showReplies, setShowReplies] = useState(false);
-
-//   const toggleReplies = () => {
-//     setShowReplies(!showReplies);
-//   };
-
-//   const toggleReply = () => {};
-
-//   return (
-//     <div className="w-full mb-4" style={{ paddingLeft: `${leftVal * 10}px` }}>
-//       <div className="flex items-center gap-4">
-//         <img src={profileImage} alt="User" className="w-10 h-10 rounded-full" />
-//         <div>
-//           <h4 className="font-semibold">{username}</h4>
-//           <span className="text-sm text-gray-500">{commentedAt}</span>
-//         </div>
-//       </div>
-
-//       <p className="mt-3 text-gray-700">{comment}</p>
-
-//       <div className="mt-2 flex items-center gap-4 text-gray-600">
-//         {comments && comments.isReplyLoaded && (
-//           <button className="flex items-center" onClick={toggleReply}>
-//             <FaRegHeart />
-//             <span className="ml-1">Hide Reply</span>
-//           </button>
-//         )}
-
-//         <button className="flex items-center" onClick={toggleReplies}>
-//           <FaReply />
-//           <span className="ml-1">Reply</span>
-//         </button>
-//       </div>
-
-//       {/* && comment.children && comment.children.length > 0 */}
-//       {showReplies && (
-//         <div className="mt-4 w-2/3">
-//           <CommentsElement
-//             action="reply"
-//             index={index}
-//             replyingTo={_id}
-//             setShowReplies={setShowReplies}
-//           />
-//         </div>
-//       )}
-//       {/* <div className="mt-4 pl-8">
-//         {comment.children &&
-//           comment.children.length > 0 &&
-//           comment.children.map((reply, index) => (
-//             <AllComment
-//               key={index}
-//               comments={reply}
-//               leftVal={comment?.childrenLevel * 4}
-//             />
-//           ))}
-//       </div> */}
-//     </div>
-//   );
-// };
-
-// export default AllComment;
-
-// import { useState } from "react";
-// import { FaReply, FaHeart, FaRegHeart } from "react-icons/fa";
-// import CommentsElement from "./CommentsElement";
-
-// const AllComment = ({ index, leftVal, comments }) => {
-//   let {
-//     comment,
-//     commentedAt,
-//     commented_by: {
-//       personal_info: { username, profileImage },
-//     },
-//     _id,
-//     children, // Added to render child comments (replies)
-//   } = comments;
-
-//   const [showReplies, setShowReplies] = useState(false);
-
-//   const toggleReplies = () => {
-//     setShowReplies(!showReplies);
-//   };
-
-//   return (
-//     <div className="w-full mb-4" style={{ paddingLeft: `${leftVal * 10}px` }}>
-//       <div className="flex items-center gap-4">
-//         <img src={profileImage} alt="User" className="w-10 h-10 rounded-full" />
-//         <div>
-//           <h4 className="font-semibold">{username}</h4>
-//           <span className="text-sm text-gray-500">{commentedAt}</span>
-//         </div>
-//       </div>
-
-//       <p className="mt-3 text-gray-700">{comment}</p>
-
-//       <div className="mt-2 flex items-center gap-4 text-gray-600">
-//         <button className="flex items-center" onClick={toggleReplies}>
-//           {showReplies ? <FaRegHeart /> : <FaReply />}
-//           <span className="ml-1">{showReplies ? "Hide Replies" : "Reply"}</span>
-//         </button>
-//       </div>
-
-//       {/* Conditionally render reply input field when user clicks Reply */}
-//       {showReplies && (
-//         <div className="mt-4 w-2/3">
-//           <CommentsElement
-//             action="reply"
-//             index={index}
-//             replyingTo={_id}
-//             setShowReplies={setShowReplies}
-//           />
-//         </div>
-//       )}
-
-//       {/* Render replies (children) recursively */}
-//       {children && children.length > 0 && (
-//         <div className="mt-4 pl-8">
-//           {children.map((reply, childIndex) => (
-//             <AllComment
-//               key={reply._id} // Ensure unique key with comment _id
-//               index={childIndex}
-//               leftVal={leftVal + 1} // Increase indentation level for nested replies
-//               comments={reply}
-//             />
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default AllComment;
-
 import { useState } from "react";
 import { FaReply } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
 import CommentsElement from "./CommentsElement";
 import AnimationWrapper from "../../shared/components/animation/page-animation";
-import { extractTime } from "../../utils/extractTime";
+import { extractTimeInPost } from "../../utils/extractTime";
+import { Link } from "react-router-dom";
 
 const AllComment = ({ index, leftVal, comments }) => {
   let {
     comment,
     commentedAt,
     commented_by: {
-      personal_info: { username, profileImage },
+      personal_info: { firstName, lastName, username, profileImage },
     },
     _id, // This should be available from the parent comment
     children, // For replies (children comments)
   } = comments;
-  console.log(comments, "comments in AllComment!")
 
   const [showReplies, setShowReplies] = useState(false);
   const [hideReply, setHideReply] = useState(!!comments.children);
@@ -181,14 +32,21 @@ const AllComment = ({ index, leftVal, comments }) => {
     }
   };
 
+  const displayName =
+    firstName && lastName
+      ? `${firstName} ${lastName}`
+      : firstName || lastName || "Anonymous";
+
   return (
     <div className="w-full mb-4" style={{ paddingLeft: `${leftVal * 10}px` }}>
       <div className="flex items-center gap-4">
         <img src={profileImage} alt="User" className="w-10 h-10 rounded-full" />
         <div>
-          <h4 className="font-semibold">{username}</h4>
+          <Link to={`/user/${username}`}>
+            <h4 className="font-semibold capitalize hover:underline">{displayName}</h4>
+          </Link>
           <span className="text-sm text-gray-500">
-            {extractTime(commentedAt)}
+            {extractTimeInPost(commentedAt)}
           </span>
         </div>
       </div>

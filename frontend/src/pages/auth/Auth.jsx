@@ -24,7 +24,6 @@ import registerImg from "../../assets/images/registration.png";
 
 const Auth = () => {
   const { isLoggedIn, login } = useContext(AuthContext);
-  // console.log(isLoggedIn, "isLoggedIn")
   const [isLoginMode, setIsLoginMode] = useState(true);
   const navigate = useNavigate();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();

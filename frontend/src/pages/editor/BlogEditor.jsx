@@ -21,7 +21,6 @@ const BlogEditor = () => {
   const { error, sendRequest, clearError } = useHttpClient();
   const { token } = useContext(AuthContext);
   const blogId = useParams().blogId || null;
-  console.log(blogId, "blogId in BlogEditor");
 
   const { title, banner } = blog;
   const [isPrivatePost, setIsPrivatePost] = useState(false);

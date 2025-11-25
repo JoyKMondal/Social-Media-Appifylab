@@ -7,6 +7,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 
 const BlogQuality = () => {
   let {
+    blog,
     blog: {
       _id,
       title,
@@ -93,7 +94,7 @@ const BlogQuality = () => {
             >
               <i
                 className={`fi text-2xl ${
-                  liked ? "fi-sr-heart" : "fi-rr-heart"
+                  liked ? "fi-sr-thumbs-up" : "fi-rr-social-network"
                 }`}
               ></i>
             </button>
@@ -105,7 +106,7 @@ const BlogQuality = () => {
               htmlFor="my-drawer-4"
               className="drawer-button h-12 w-12 rounded-full flex items-center justify-center bg-grey cursor-pointer"
             >
-              <i className="fi fi-rs-comment-dots text-2xl"></i>
+              <i className={`fi fi-rs-comment text-2xl`}></i>
             </label>
             <p className="text-dark-grey text-xl">{total_comments}</p>
           </div>
@@ -119,12 +120,6 @@ const BlogQuality = () => {
               Edit
             </Link>
           )}
-
-          <Link
-            to={`https://twitter.com/intent/tweet?text=Read ${title}&url=${location.href}`}
-          >
-            <i className="fi fi-brands-twitter text-black text-2xl hover:text-twitter transition-colors duration-300"></i>
-          </Link>
         </div>
       </div>
       <hr className="border-grey my-2" />

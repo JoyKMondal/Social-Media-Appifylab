@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import { data } from "autoprefixer";
-import { BlogActionsContext } from "../blogs/Blog";
+import { BlogDetailContext } from "../../pages/blog/BlogDetailPage";
 
 const CommentsElement = ({
   action,
@@ -29,7 +28,7 @@ const CommentsElement = ({
     setBlog,
     previousCommentsLoaded,
     setPreviousCommentsLoaded,
-  } = useContext(BlogActionsContext);
+  } = useContext(BlogDetailContext);
 
   const {
     personal_info: { fullName, username, profileImage },

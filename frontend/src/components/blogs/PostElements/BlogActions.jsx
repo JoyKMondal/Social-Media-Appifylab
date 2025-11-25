@@ -1,12 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../shared/context/auth-context";
-import { AiFillLike } from "react-icons/ai";
-import { LuMessageCircle } from "react-icons/lu";
-import { IoMdShareAlt } from "react-icons/io";
 import axios from "axios";
 import { BlogActionsContext } from "../Blog";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const BlogActions = () => {
   let {
@@ -103,7 +100,11 @@ export const BlogActions = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <p className="text-[#515151]">{total_comments} Comments</p>
+          <Link to={`/blog/${blogId}`}>
+            <p className="text-[#515151] hover:underline">
+              {total_comments} Comments
+            </p>
+          </Link>
           <p className="text-[#515151]">{0} Share</p>
         </div>
       </div>
@@ -125,7 +126,7 @@ export const BlogActions = () => {
           <span className="text-xl">Like</span>
         </button>
 
-        <div className="drawer-content w-1/3 my-4 mx-auto hover:bg-gray-200 cursor-pointer">
+        {/* <div className="drawer-content w-1/3 my-4 mx-auto hover:bg-gray-200 cursor-pointer">
           <label
             htmlFor="my-drawer-4"
             className={`drawer-button text-[#515151] flex justify-center items-center gap-2`}
@@ -133,6 +134,15 @@ export const BlogActions = () => {
             <i className={`fi fi-rs-comment text-2xl`}></i>
             <span className="text-xl">Comment</span>
           </label>
+        </div> */}
+        <div className="w-1/3 my-4 mx-auto hover:bg-gray-200 cursor-pointer">
+          <Link
+            to={`/blog/${blogId}`}
+            className={`text-[#515151] flex justify-center items-center gap-2`}
+          >
+            <i className={`fi fi-rs-comment text-2xl`}></i>
+            <span className="text-xl">Comment</span>
+          </Link>
         </div>
 
         <button

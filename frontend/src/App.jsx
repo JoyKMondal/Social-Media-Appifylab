@@ -21,6 +21,7 @@ import EditProfilePage from "./pages/settings/EditProfilePage";
 import ChangePasswordPage from "./pages/settings/ChangePasswordPage";
 import NotificationPage from "./pages/notification/NotificationPage";
 import BlogManagementPage from "./pages/notification/BlogManagementPage";
+import BlogDetailPage from "./pages/blog/BlogDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
           {
             path: "/user/:username",
             element: <UserProfilePage />,
+            errorElement: <Error />,
+          },
+          {
+            path: "/blog/:blogId",
+            element: <BlogDetailPage />,
             errorElement: <Error />,
           },
           {
