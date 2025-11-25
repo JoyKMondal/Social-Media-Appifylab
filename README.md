@@ -35,11 +35,11 @@ A modern full-stack social media application. Users can register, log in, create
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![Login & Register Pages](https://imgur.com/a/VDqjDP1.png)
+![Login & Register Pages](https://i.imgur.com/Zu2oz0C.png)
 
-![Feed Page with posts, likes and comments](https://imgur.com/a/uTCTVb8.png)  
+![Feed Page with posts, likes and comments](https://i.imgur.com/BdeQOc8.png)  
 
-![Dashboard for managing Posts](https://imgur.com/a/sfdHX76.png)  
+![Dashboard for managing Posts](https://i.imgur.com/wuHOXxS.png)  
 
 ![New Post Page](https://i.imgur.com/07LBELh.png)
 
