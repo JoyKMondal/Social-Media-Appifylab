@@ -26,36 +26,36 @@ const path = require("path");
 const cloudinary = require("cloudinary").v2;
 const streamifier = require("streamifier");
 
-const cors = require("cors");
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
+// const cors = require("cors");
+// const rateLimit = require('express-rate-limit');
+// const helmet = require('helmet');
+// const mongoSanitize = require('express-mongo-sanitize');
+// const xss = require('xss-clean');
 
-// Security middleware
-app.use(helmet({
-  contentSecurityPolicy: false, // customize if needed
-}));
-app.use(mongoSanitize());
-app.use(xss());
+// // Security middleware
+// app.use(helmet({
+//   contentSecurityPolicy: false, // customize if needed
+// }));
+// app.use(mongoSanitize());
+// app.use(xss());
 
-// Global rate limit
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-app.use('/api/', limiter);
+// // Global rate limit
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // limit each IP to 100 requests
+//   standardHeaders: true,
+//   legacyHeaders: false,
+// });
+// app.use('/api/', limiter);
 
-// CORS — NEVER use "*"
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:5000'
-  ],
-  credentials: true,
-}));
+// // CORS — NEVER use "*"
+// app.use(cors({
+//   origin: [
+//     'http://localhost:3000',
+//     'http://localhost:5000'
+//   ],
+//   credentials: true,
+// }));
 
 const MIME_TYPE_MAP = {
   "image/png": "png",

@@ -58,7 +58,7 @@ const BlogEditor = () => {
       );
 
       setTimeout(() => {
-        navigate("/dashboard/blogs");
+        navigate("/dashboard/posts");
       }, 500);
       console.log(responseData);
     } catch (err) {
