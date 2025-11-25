@@ -129,6 +129,7 @@ const Auth = () => {
   };
 
   const googleAuthHandler = async () => {
+    alert("Working fine in development. But not in production. Will fix it soon!")
     try {
       const user = await authWithGoogle();
       const data = await sendRequest(
